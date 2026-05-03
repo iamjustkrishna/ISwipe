@@ -12,16 +12,15 @@ let package = Package(
             targets: ["IndicSwipe"]),
     ],
     dependencies: [
-        // Updated URL to include '-manager'
+        // The URL must have '-manager'
         .package(url: "https://github.com/microsoft/onnxruntime-swift-package-manager.git", from: "1.17.0")
     ],
     targets: [
         .target(
             name: "IndicSwipe",
             dependencies: [
-                // The product name is 'onnxruntime', but the package reference 
-                // must match the name defined in the remote repository.
-                .product(name: "onnxruntime", package: "onnxruntime-swift-package")
+                // This 'package' name must now also include '-manager' to match the URL/Identity
+                .product(name: "onnxruntime", package: "onnxruntime-swift-package-manager")
             ],
             path: "IndicSwipe"
         )
