@@ -12,14 +12,15 @@ let package = Package(
             targets: ["IndicSwipe"]),
     ],
     dependencies: [
-        // ONNX Runtime for iOS
-        // Provides ORTEnv, ORTSession, etc. for executing our Swipe and Xlit models.
-        .package(url: "https://github.com/microsoft/onnxruntime-swift-package.git", from: "1.17.0")
+        // Updated URL to include '-manager'
+        .package(url: "https://github.com/microsoft/onnxruntime-swift-package-manager.git", from: "1.17.0")
     ],
     targets: [
         .target(
             name: "IndicSwipe",
             dependencies: [
+                // The product name is 'onnxruntime', but the package reference 
+                // must match the name defined in the remote repository.
                 .product(name: "onnxruntime", package: "onnxruntime-swift-package")
             ],
             path: "IndicSwipe"
